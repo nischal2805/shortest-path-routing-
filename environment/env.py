@@ -12,6 +12,11 @@ class Env(gym.Env):
     # Constructor, create graphs, set some variables for gym, house keeping stuff
     def __init__(self, save_file: str, graph: Graph = None) -> None:
 
+        """Initialize environment with graph"""
+        self.save_file = save_file
+        # Add this line to create a test file path
+        self.test_file = save_file.replace(".csv", "_test.csv")
+
         # Create our graphs, each with a unique set of edge weights
         if graph is None:
             self.graph: Graph = create_graph()
@@ -29,11 +34,6 @@ class Env(gym.Env):
         # Counters
         self.steps: int = 0
         self.hops: int = 0
-
-        # Log dir
-        self.save_file: str = save_file
-        # self.test_file: str = save_file[:save_file.index(".csv")]+"_test.csv"
-        # print(self.test_file)
 
         # Path information
         self.source: int = -1

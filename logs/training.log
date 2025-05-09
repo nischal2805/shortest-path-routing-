@@ -1,0 +1,40 @@
+2025-05-07 19:00:23,922 - root - ERROR - Error in ma: ma.<locals>.<lambda>() takes 0 positional arguments but 1 was given
+2025-05-07 19:00:23,923 - root - ERROR - Traceback (most recent call last):
+  File "D:\main\utils\error_handling.py", line 23, in wrapper
+    return func(*args, **kwargs)
+  File "D:\main\train.py", line 38, in ma
+    env = ParallelEnv(env_creator, num_envs=4)
+  File "D:\main\environment\parallel_env.py", line 10, in __init__
+    self.envs = [env_creator(config) for _ in range(num_envs)]
+  File "D:\main\environment\parallel_env.py", line 10, in <listcomp>
+    self.envs = [env_creator(config) for _ in range(num_envs)]
+TypeError: ma.<locals>.<lambda>() takes 0 positional arguments but 1 was given
+
+2025-05-07 19:00:23,925 - root - ERROR - Failed to create recovery checkpoint
+2025-05-07 19:02:56,699 - root - ERROR - Error in ma: 'ParallelEnv' object has no attribute 'graph'
+2025-05-07 19:02:56,700 - root - ERROR - Traceback (most recent call last):
+  File "D:\main\utils\error_handling.py", line 23, in wrapper
+    return func(*args, **kwargs)
+  File "D:\main\train.py", line 44, in ma
+    env.graph = adjust_lat_band(env.graph, flows)
+AttributeError: 'ParallelEnv' object has no attribute 'graph'
+
+2025-05-07 19:02:56,701 - root - ERROR - Failed to create recovery checkpoint
+2025-05-08 12:00:36,435 - root - ERROR - Error in ma: 'ParallelEnv' object has no attribute 'graph'
+2025-05-08 12:00:36,438 - root - ERROR - Traceback (most recent call last):
+  File "D:\main\utils\error_handling.py", line 23, in wrapper
+    return func(*args, **kwargs)
+  File "D:\main\train.py", line 44, in ma
+    env.graph = adjust_lat_band(env.graph, flows)
+AttributeError: 'ParallelEnv' object has no attribute 'graph'
+
+2025-05-08 12:00:36,438 - root - ERROR - Failed to create recovery checkpoint
+2025-05-08 12:04:15,184 - root - ERROR - Error in ma: 'ParallelEnv' object has no attribute 'graph'
+2025-05-08 12:04:15,184 - root - ERROR - Traceback (most recent call last):
+  File "D:\main-sr\utils\error_handling.py", line 23, in wrapper
+    return func(*args, **kwargs)
+  File "D:\main-sr\train.py", line 44, in ma
+    env.graph = adjust_lat_band(env.graph, flows)
+AttributeError: 'ParallelEnv' object has no attribute 'graph'
+
+2025-05-08 12:04:15,184 - root - ERROR - Failed to create recovery checkpoint

@@ -1,22 +1,18 @@
-from tqdm import  tqdm
+from tqdm import tqdm
 from itertools import count
 import random
-from torch_geometric.nn import  GATConv
+from torch_geometric.nn import GATConv
 from torch_geometric.loader import DataLoader
 import torch.nn.functional as F
 from torch import nn
 import torch
 import math
-from models.DQN import GAMMA, Agent, Transition, ReplayMemory
+# Fix import to use constants directly
+from models.DQN import Agent, Transition, ReplayMemory
+from models.DQN import BATCH_SIZE, GAMMA, EPS_START, EPS_END, EPS_DECAY, TARGET_UPDATE
 from torch.optim.lr_scheduler import StepLR
 from config import device
 import pandas as pd
-TARGET_UPDATE = 14_000
-EPS_DECAY = 17_000  # larger means slower decay
-EPS_START = .95
-BATCH_SIZE = 128
-EPS_END = 0.001
-GAMMA = 0.99
 
 
 class GCN(nn.Module):
@@ -63,8 +59,9 @@ class GCN(nn.Module):
 recorder = [0, 0]
 
 class GCN_Agent(Agent):
-    def __init__(self, outputs, policy_net, target_net, num_nodes, env):
-        super().__init__(outputs, policy_net, target_net)
+    def __init__(self, outputs, policy_net, target_net, num_nodes, env, config=None):  # Add default config
+        # Call parent constructor with proper arguments
+        super().__init__(outputs, policy_net, target_net, config)
         self.num_nodes = num_nodes
         self.env = env
         self.memory = ReplayMemory(3_000)
